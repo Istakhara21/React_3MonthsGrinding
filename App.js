@@ -1,19 +1,18 @@
-const parentDiv = React.createElement("div", { id: "parent" }, [
-        React.createElement("div", { id: "child" }, [
-          React.createElement("h1", {}, "Hello Nested World"),
-          React.createElement("h2", {}, "Hello Nested World"),
-        ]),
-        React.createElement("div", { id: "child" }, [
-          React.createElement("h1", {}, "Hello Nested World"),
-          React.createElement("h2", {}, "Hello Nested World"),
-        ]),
-      ]);
-      const root = ReactDOM.createRoot(document.getElementById("root"));
-      root.render(parentDiv);
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-      // const heading = React.createElement("h1", {}, "Hello World React");
+const Title = () => {
+  return <h1 id="title"> Food Villa</h1>;
+};
 
-      // const heading = document.createElement("h1");
-      // heading.innerHTML = "Hello World JS";
-      // const root = document.getElementById("root");
-      // root.appendChild(heading);
+const HeaderComp = () => {
+  return (
+    <div>
+      <Title />
+      <h1>Hello JSX</h1>
+    </div>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<HeaderComp />);

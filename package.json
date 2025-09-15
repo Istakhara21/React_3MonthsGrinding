@@ -1,0 +1,33 @@
+{
+  "name": "react_3monthsgrinding",
+  "version": "1.0.0",
+  "description": "I'm going to complete this React tutorial in 1 month.",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Istakhara21/React_3MonthsGrinding.git"
+  },
+  "author": "Istakhar Ahmad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Istakhara21/React_3MonthsGrinding/issues"
+  },
+  "homepage": "https://github.com/Istakhara21/React_3MonthsGrinding#readme",
+  "dependencies": {
+    "browserslist": "^4.26.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.4",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "parcel": "^2.15.4"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
+}
