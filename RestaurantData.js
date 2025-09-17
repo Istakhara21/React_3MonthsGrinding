@@ -1,38 +1,6 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-const Title = () => {
-  return (
-    <a href="">
-      <img
-        className="logo"
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbgjA8oGi_8oCqoJocOuoKn269pahSDrnVfw&s"
-        alt=""
-      />
-    </a>
-  );
-};
-
-const Header = () => {
-  return (
-    <div className="header">
-      <Title />
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact Us</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-
-// Restaurant Card Data
-const restaurantList = [
+const restaurants = [
   {
-    data: {
+    info: {
       id: "150602",
       name: "Raimens Cafe 79",
       cloudinaryImageId: "eohdm5sdnq6e2u46xeux",
@@ -44,7 +12,7 @@ const restaurantList = [
     },
   },
   {
-    data: {
+    info: {
       id: "234875",
       name: "Adil Hotel",
       cloudinaryImageId: "gp1ityra6utvzqn6ghnv",
@@ -56,7 +24,7 @@ const restaurantList = [
     },
   },
   {
-    data: {
+    info: {
       id: "774546",
       name: "Shree Naivedyam",
       cloudinaryImageId: "2274f59cb8efcfab1f446b195bcbda3b",
@@ -68,7 +36,7 @@ const restaurantList = [
     },
   },
   {
-    data: {
+    info: {
       id: "912754",
       name: "Urban Cafe",
       cloudinaryImageId:
@@ -81,7 +49,7 @@ const restaurantList = [
     },
   },
   {
-    data: {
+    info: {
       id: "1034629",
       name: "food of indians",
       cloudinaryImageId:
@@ -94,7 +62,7 @@ const restaurantList = [
     },
   },
   {
-    data: {
+    info: {
       id: "1046503",
       name: "The Kohli's",
       cloudinaryImageId:
@@ -118,7 +86,7 @@ const restaurantList = [
     },
   },
   {
-    data: {
+    info: {
       id: "151656",
       name: "Dev International",
       cloudinaryImageId: "enj3srsnhbltbom2ovvh",
@@ -127,53 +95,59 @@ const restaurantList = [
       costForTwo: "₹100 for two",
       cuisines: ["Chinese", "Fast Food", "Beverages"],
       avgRating: 4.3,
+      parentId: "71556",
+      avgRatingString: "4.3",
+      totalRatingsString: "575",
+      sla: {
+        deliveryTime: 66,
+        lastMileTravel: 13.6,
+        serviceability: "SERVICEABLE",
+        slaString: "65-70 mins",
+        lastMileTravelString: "13.6 km",
+        iconType: "ICON_TYPE_EMPTY",
+      },
+      availability: {
+        nextCloseTime: "2025-09-16 22:30:00",
+        opened: true,
+      },
+      badges: {},
+      isOpen: true,
+      type: "F",
+      badgesV2: {
+        entityBadges: {
+          imageBased: {},
+          textBased: {},
+          textExtendedBadges: {},
+        },
+      },
+      aggregatedDiscountInfoV3: {
+        header: "₹100 OFF",
+        subHeader: "ABOVE ₹299",
+        discountTag: "FLAT DEAL",
+      },
+      orderabilityCommunication: {
+        title: {},
+        subTitle: {},
+        message: {},
+        customIcon: {},
+      },
+      differentiatedUi: {
+        displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        differentiatedUiMediaDetails: {
+          mediaType: "ADS_MEDIA_ENUM_IMAGE",
+          lottie: {},
+          video: {},
+        },
+      },
+      reviewsSummary: {},
+      displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+      restaurantOfferPresentationInfo: {},
+      externalRatings: {
+        aggregatedRating: {
+          rating: "--",
+        },
+      },
+      ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
     },
   },
 ];
-
-const RestaurantCard = ({name, cloudinaryImageId, cuisines, avgRating}) => {
-  return (
-    <div className="card">
-      <img
-        src={
-          "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-          cloudinaryImageId
-        }
-        alt=""
-      />
-      <h2>{name}</h2>
-      <h3>{cuisines.join(", ")}</h3>
-      <h4>{avgRating} stars</h4>
-    </div>
-  );
-};
-
-const Body = () => {
-  return (
-    <div className="restaurant-card-list">
-      {restaurantList.map((restaurant) => {
-        return <RestaurantCard {...restaurant.data} key={restaurant.data.id} />
-      })}
-    </div>
-  );
-};
-const Footer = () => {
-  return (
-    <>
-      <h1>Footer</h1>
-    </>
-  );
-};
-
-const AppLayout = () => {
-  return (
-    <>
-      <Header />
-      <Body />
-      <Footer />
-    </>
-  );
-};
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
