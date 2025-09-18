@@ -1,33 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
-const Title = () => {
-  return (
-    <a href="">
-      <img
-        className="logo"
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbgjA8oGi_8oCqoJocOuoKn269pahSDrnVfw&s"
-        alt=""
-      />
-    </a>
-  );
-};
 
-const Header = () => {
-  return (
-    <div className="header">
-      <Title />
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact Us</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
 
 // Restaurant Card Data
 const restaurantList = [
@@ -157,13 +133,7 @@ const Body = () => {
     </div>
   );
 };
-const Footer = () => {
-  return (
-    <>
-      <h1>Footer</h1>
-    </>
-  );
-};
+
 
 const AppLayout = () => {
   return (
