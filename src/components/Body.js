@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { restaurantList } from "../config";
 import RestaurantCard from "./RestaurantCard";
 
@@ -12,6 +12,23 @@ function filterData(searchText, restaurants) {
 const Body = () => {
   const [restaurants, setRestaurants] = useState(restaurantList);
   const [searchText, setSearchText] = useState("");
+
+  console.log("restaurants: ", restaurants);
+  console.log("IsArray? : ", Array.isArray(restaurants));
+
+
+  useEffect(() => {
+    //API call
+    getRestaurants();
+  },[]);
+
+  async function getRestaurants() {
+    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.99740&lng=79.00110&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+    const json = await data.json();
+    console.log(json);  
+    // setRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants[0].data);  
+    //setRestaurants()
+  }
   return (
     <>
       <div className="search-container">
