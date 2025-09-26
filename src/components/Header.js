@@ -1,14 +1,15 @@
 import { useState } from "react";
+import { Link } from "react-router";
 
 const Title = () => {
   return (
-    <a href="">
+    <Link to="/">
       <img
         className="logo"
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbgjA8oGi_8oCqoJocOuoKn269pahSDrnVfw&s"
         alt=""
       />
-    </a>
+    </Link>
   );
 };
 
@@ -16,7 +17,7 @@ const Title = () => {
 const loggedInUser = () => {
   //API call to check
   return false;
-}
+};
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -25,13 +26,26 @@ const Header = () => {
       <Title />
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact Us</li>
-          <li>Cart</li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+
+          <li>
+            <Link to="/contact">Contact </Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/cart">Cart</Link>
+          </li>
         </ul>
       </div>
-      {isLoggedIn ? (<button onClick={()=>setIsLoggedIn(false)}>Logout</button> ): (<button onClick={()=>setIsLoggedIn(true)}>Login</button>)}
+      {isLoggedIn ? (
+        <button onClick={() => setIsLoggedIn(false)}>Logout</button>
+      ) : (
+        <button onClick={() => setIsLoggedIn(true)}>Login</button>
+      )}
     </div>
   );
 };
