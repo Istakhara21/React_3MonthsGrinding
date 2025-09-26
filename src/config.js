@@ -2,10 +2,10 @@ export const IMG_CDN_URL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 
 
-  // Restaurant Card Data
+  // Restaurant Card info
 export const restaurantList = [
   {
-    data: {
+    info: {
       id: "150602",
       name: "Raimens Cafe 79",
       cloudinaryImageId: "eohdm5sdnq6e2u46xeux",
@@ -17,7 +17,7 @@ export const restaurantList = [
     },
   },
   {
-    data: {
+    info: {
       id: "234875",
       name: "Adil Hotel",
       cloudinaryImageId: "gp1ityra6utvzqn6ghnv",
@@ -29,7 +29,7 @@ export const restaurantList = [
     },
   },
   {
-    data: {
+    info: {
       id: "774546",
       name: "Shree Naivedyam",
       cloudinaryImageId: "2274f59cb8efcfab1f446b195bcbda3b",
@@ -41,7 +41,7 @@ export const restaurantList = [
     },
   },
   {
-    data: {
+    info: {
       id: "912754",
       name: "Urban Cafe",
       cloudinaryImageId:
@@ -54,7 +54,7 @@ export const restaurantList = [
     },
   },
   {
-    data: {
+    info: {
       id: "1034629",
       name: "food of indians",
       cloudinaryImageId:
@@ -67,7 +67,7 @@ export const restaurantList = [
     },
   },
   {
-    data: {
+    info: {
       id: "1046503",
       name: "The Kohli's",
       cloudinaryImageId:
@@ -91,7 +91,7 @@ export const restaurantList = [
     },
   },
   {
-    data: {
+    info: {
       id: "151656",
       name: "Dev International",
       cloudinaryImageId: "enj3srsnhbltbom2ovvh",
