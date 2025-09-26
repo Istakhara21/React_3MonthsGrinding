@@ -1,35 +1,56 @@
 import { use, useEffect, useState } from "react";
 import { restaurantList } from "../config";
 import RestaurantCard from "./RestaurantCard";
+import ShimmerUI from "./ShimmerUI";
 
+//filter search funtion
 function filterData(searchText, restaurants) {
   const filterData = restaurants.filter((restaurant) =>
-    restaurant.data.name.includes(searchText)
+    restaurant.info.name?.toLowerCase().includes(searchText.toLowerCase())
   );
   return filterData;
 }
 
 const Body = () => {
-  const [restaurants, setRestaurants] = useState(restaurantList);
+  const [allRestaurants, setAllRestaurants] = useState([]);
+  const [filteredRestaurants, setFilteredRestaurants] =
+    useState(restaurantList);
   const [searchText, setSearchText] = useState("");
 
-  console.log("restaurants: ", restaurants);
-  console.log("IsArray? : ", Array.isArray(restaurants));
-
-
+  //API call to get all restaurants
   useEffect(() => {
     //API call
     getRestaurants();
-  },[]);
+  }, []);
 
+  //API call to get all restaurants
   async function getRestaurants() {
-    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.99740&lng=79.00110&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.99740&lng=79.00110&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
     const json = await data.json();
-    console.log(json);  
-    setRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);  
+    console.log(json);
+    setAllRestaurants(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setFilteredRestaurants(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
     //setRestaurants()
   }
-  return (
+
+  //Conditional Rendering
+  //if restraurant loads -> Restuarants
+  //if restaurant not load -> Shimmer UI
+
+  //not render component (Early Return)
+  if (!allRestaurants) return null;
+
+  
+
+  return allRestaurants?.length === 0 ? (
+    <ShimmerUI />
+  ) : (
     <>
       <div className="search-container">
         <input
@@ -44,17 +65,18 @@ const Body = () => {
           className="search-btn"
           onClick={() => {
             //need to filter the data
-            const data = filterData(searchText, restaurants);
+            const data = filterData(searchText, allRestaurants);
             //filterData();
             //update the data
-            setRestaurants(data);
+            setFilteredRestaurants(data);
           }}
         >
           Search
         </button>
       </div>
       <div className="restaurant-card-list">
-        {restaurants.map((restaurant) => {
+        
+        {filteredRestaurants.map((restaurant) => {
           return (
             <RestaurantCard {...restaurant.info} key={restaurant.info.id} />
           );
