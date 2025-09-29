@@ -35,3 +35,7 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.user-about {
+    border: 1px solid black;
+}
