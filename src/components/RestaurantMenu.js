@@ -6,8 +6,7 @@ const RestaurantMenu = () => {
   //creating a state variable for updating Res info.
   const [resInfo, setResInfo] = useState();
 
-  const params = useParams();
-  console.log(params);
+  const {resId} = useParams();
 
   useEffect(() => {
     FetchMenu();
@@ -15,11 +14,11 @@ const RestaurantMenu = () => {
 
   const FetchMenu = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.5399515&lng=77.25915789999999&restaurantId=655878&catalog_qa=undefined&submitAction=ENTER"
+      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.5399515&lng=77.25915789999999&restaurantId=" + resId + "&catalog_qa=undefined&submitAction=ENTER"
     );
     const json = await data.json();
 
-    // console.log(json);
+    console.log(json);
     setResInfo(json.data);
   };
 
