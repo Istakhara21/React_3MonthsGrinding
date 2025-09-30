@@ -2,19 +2,25 @@ import React from "react";
 
 class UserClass extends React.Component {
   constructor(props) {
-    console.log("Child Constructor")
     super(props);
+    // console.log(this.props.name + "Child Constructor");
+
     this.state = {
       count: 0,
     };
   }
-  componentDidMount() {
-    console.log("Child Comp Did Mount?")
+  async componentDidMount() {
+    // console.log(this.props.name + "Child Comp Did Mount?");
+    //API Call
+    const data = await fetch("https://api.github.com/users/akshaymarch7");
+    const json = await data.json();
+
+    console.log(json);
   }
   render() {
     const { name } = this.props;
     const { count } = this.state;
-    console.log("Child Render")
+    // console.log(this.props.name + "Child Render");
     return (
       <div className="user-about">
         <h1>
@@ -23,7 +29,9 @@ class UserClass extends React.Component {
             onClick={() => {
               this.setState({ count: this.state.count + 1 });
             }}
-          >Count Inc</button>
+          >
+            Count Inc
+          </button>
         </h1>
 
         <h1>Name: {name}</h1>
