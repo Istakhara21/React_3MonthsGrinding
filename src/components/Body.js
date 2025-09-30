@@ -3,6 +3,7 @@ import { restaurantList } from "../utils/config";
 import RestaurantCard from "./RestaurantCard";
 import ShimmerUI from "./ShimmerUI";
 import { Link } from "react-router";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 //filter search funtion
 function filterData(searchText, restaurants) {
@@ -45,6 +46,14 @@ const Body = () => {
   //if restaurant not load -> Shimmer UI
 
   //not render component (Early Return)
+
+  //Online Status Feature
+  const onlineStatus = useOnlineStatus();
+  if (onlineStatus === false)
+    return (
+      <h1>Looks like you are offline! Please check your internet connection</h1>
+    );
+
   if (!allRestaurants) return null;
 
   return allRestaurants?.length === 0 ? (

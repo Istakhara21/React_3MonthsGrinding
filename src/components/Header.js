@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Title = () => {
   return (
@@ -20,12 +21,14 @@ const loggedInUser = () => {
 };
 
 const Header = () => {
+  const onlineStatus = useOnlineStatus();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <div className="header">
       <Title />
       <div className="nav-items">
         <ul>
+          <li>Online Status: {onlineStatus ? "ON" : "OFF"}</li>
           <li>
             <Link to="/">Home</Link>
           </li>
