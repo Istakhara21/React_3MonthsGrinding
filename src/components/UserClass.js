@@ -2,14 +2,19 @@ import React from "react";
 
 class UserClass extends React.Component {
   constructor(props) {
+    console.log("Child Constructor")
     super(props);
     this.state = {
       count: 0,
     };
   }
+  componentDidMount() {
+    console.log("Child Comp Did Mount?")
+  }
   render() {
     const { name } = this.props;
     const { count } = this.state;
+    console.log("Child Render")
     return (
       <div className="user-about">
         <h1>
@@ -18,7 +23,7 @@ class UserClass extends React.Component {
             onClick={() => {
               this.setState({ count: this.state.count + 1 });
             }}
-          ></button>
+          >Count Inc</button>
         </h1>
 
         <h1>Name: {name}</h1>
