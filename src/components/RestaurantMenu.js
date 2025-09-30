@@ -2,26 +2,15 @@ import { useEffect, useState } from "react";
 import ShimmerUI from "./ShimmerUI";
 import { useParams } from "react-router";
 import { MENU_API_1, MENU_API_2 } from "../utils/config";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
   //creating a state variable for updating Res info.
-  const [resInfo, setResInfo] = useState();
+  // const [resInfo, setResInfo] = useState();
 
-  const {resId} = useParams();
+  const { resId } = useParams();
 
-  useEffect(() => {
-    FetchMenu();
-  }, []);
-
-  const FetchMenu = async () => {
-    const data = await fetch(
-      MENU_API_1 + resId + MENU_API_2
-    );
-    const json = await data.json();
-
-    console.log(json);
-    setResInfo(json.data);
-  };
+  const resInfo = useRestaurantMenu(resId);
 
   if (!resInfo) {
     return <ShimmerUI />;
@@ -37,7 +26,7 @@ const RestaurantMenu = () => {
   const itemCards =
     resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card
       ?.itemCards;
-//   console.log(itemCards);
+  //   console.log(itemCards);
   return (
     <div className="menu">
       <h1>{name}</h1>
@@ -48,7 +37,7 @@ const RestaurantMenu = () => {
       <ul>
         {itemCards.map((item) => (
           <li key={item?.card?.info?.id}>
-            {item?.card?.info?.name} - ₹{item?.card?.info?.price/100}
+            {item?.card?.info?.name} - ₹{item?.card?.info?.price / 100}
           </li>
         ))}
       </ul>
