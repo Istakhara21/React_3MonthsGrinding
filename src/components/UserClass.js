@@ -3,7 +3,7 @@ import React from "react";
 class UserClass extends React.Component {
   constructor(props) {
     super(props);
-    // console.log(this.props.name + "Child Constructor");
+    console.log("Child Constructor");
 
     this.state = {
       userInfo: {
@@ -13,7 +13,7 @@ class UserClass extends React.Component {
     };
   }
   async componentDidMount() {
-    // console.log(this.props.name + "Child Comp Did Mount?");
+    console.log("Comp Did Mount?");
     //API Call
     const data = await fetch("https://api.github.com/users/akshaymarch7");
     const json = await data.json();
@@ -24,7 +24,12 @@ class UserClass extends React.Component {
       userInfo: json,
     });
   }
+
+  componentDidUpdate() {
+    console.log("Component Did Update")
+  }
   render() {
+    console.log("render");
     const {name, location} = this.state.userInfo;
     // debugger;
     return (
@@ -39,3 +44,21 @@ class UserClass extends React.Component {
 }
 
 export default UserClass;
+
+
+
+/**
+ * --- Mounting ---
+ * Constructor <Dummy>
+ * render <Dummy>
+ *        <HTML Dummy>
+ * Component Did Mount
+ *        <API call>
+ *        <this.setSate>
+ * 
+ * 
+ * --- Update ---
+ * render(API Data)
+ * <HTML(New API Data)
+ * Component Did Mount
+ */

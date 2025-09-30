@@ -19,8 +19,8 @@ class About extends React.Component {
         <h2>This is a Food Ordering App </h2>
         {/* <User name =  {"My name is Reehan"} /> // parent */}
         <UserClass name={"First Child"} />
-        <UserClass name={"Second Child"} />
-        <UserClass name={"Third Child"} />
+        {/* <UserClass name={"Second Child"} /> */}
+        {/* <UserClass name={"Third Child"} /> */}
 
 
       </>
