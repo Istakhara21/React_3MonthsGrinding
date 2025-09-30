@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ShimmerUI from "./ShimmerUI";
 import { useParams } from "react-router";
+import { MENU_API_1, MENU_API_2 } from "../utils/config";
 
 const RestaurantMenu = () => {
   //creating a state variable for updating Res info.
@@ -14,7 +15,7 @@ const RestaurantMenu = () => {
 
   const FetchMenu = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.5399515&lng=77.25915789999999&restaurantId=" + resId + "&catalog_qa=undefined&submitAction=ENTER"
+      MENU_API_1 + resId + MENU_API_2
     );
     const json = await data.json();
 
