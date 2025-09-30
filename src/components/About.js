@@ -5,7 +5,7 @@ const About = () => {
         <>
         <h1>ABOUT US</h1>
         <h2>This is a Food Ordering App </h2>
-        <User name =  {"My name is Reehan"} /> // parent
+        {/* <User name =  {"My name is Reehan"} /> // parent */}
         <UserClass  name =  {"My name is Reehan"}/>
         </>
      )
