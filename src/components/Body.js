@@ -1,6 +1,6 @@
 import { use, useEffect, useState } from "react";
 import { restaurantList } from "../utils/config";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { PromotedRestaurant } from "./RestaurantCard";
 import ShimmerUI from "./ShimmerUI";
 import { Link } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -19,6 +19,9 @@ const Body = () => {
     useState(restaurantList);
   const [searchText, setSearchText] = useState("");
 
+  //promoted restaurants (Higher order comp)
+  const PromotedRestaurantCard = PromotedRestaurant(RestaurantCard);
+
   //API call to get all restaurants
   useEffect(() => {
     //API call
@@ -31,7 +34,7 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.99740&lng=79.00110&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
-    // console.log(json);
+    console.log(json);
     setAllRestaurants(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
@@ -60,17 +63,17 @@ const Body = () => {
     <ShimmerUI />
   ) : (
     <>
-      <div className="search-container">
+      <div className="search-container m-2 ">
         <input
           type="text"
-          className="search-input"
+          className="search-input border border-solid border-black rounded-lg mr-4"
           value={searchText}
           onChange={(e) => {
             setSearchText(e.target.value);
           }}
         />
         <button
-          className="search-btn"
+          className="search-btn pl-6 pr-3 border rounded-lg bg-blue-500 text-white"
           onClick={() => {
             //need to filter the data
             const data = filterData(searchText, allRestaurants);
@@ -82,14 +85,19 @@ const Body = () => {
           Search
         </button>
       </div>
-      <div className="restaurant-card-list">
+      <div className="restaurant-card-list flex flex-wrap  ">
         {filteredRestaurants.map((restaurant) => {
           return (
             <Link
+              className="m-1 border w-[220px] bg-stone-200 rounded-sm "
               to={"/restaurants/" + restaurant.info.id}
               key={restaurant.info.id}
-            >
-              <RestaurantCard {...restaurant.info} />
+            >{restaurant.info.isOpen ? (
+                <PromotedRestaurantCard {...restaurant.info} />
+              ) : (
+                <RestaurantCard {...restaurant.info} />
+              )}
+              
             </Link>
           );
         })}

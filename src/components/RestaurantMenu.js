@@ -4,9 +4,12 @@ import { useParams } from "react-router";
 import { MENU_API_1, MENU_API_2 } from "../utils/config";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 
+
 const RestaurantMenu = () => {
   //creating a state variable for updating Res info.
   // const [resInfo, setResInfo] = useState();
+
+
 
   const { resId } = useParams();
 
@@ -29,14 +32,16 @@ const RestaurantMenu = () => {
   //   console.log(itemCards);
   return (
     <div className="menu">
-      <h1>{name}</h1>
-      <p>{areaName}</p>
-      <p>{avgRating}</p>
-      <p>{costForTwoMessage}</p>
-      <p>{locality}</p>
-      <ul>
+      <div className="menu-title border m-4 rounded-lg">
+        <h1 className="pl-4 font-bold">{name}</h1>
+        <p className="pl-4">{areaName}</p>
+        <p className="pl-4">{avgRating}</p>
+        <p className="pl-4">{costForTwoMessage}</p>
+        <p className="pl-4">{locality}</p>
+      </div>
+      <ul className="menu-title border m-4 rounded-lg font-sans">
         {itemCards.map((item) => (
-          <li key={item?.card?.info?.id}>
+          <li className="pl-4 font-mono" key={item?.card?.info?.id}>
             {item?.card?.info?.name} - ₹{item?.card?.info?.price / 100}
           </li>
         ))}

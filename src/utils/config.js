@@ -106,3 +106,6 @@ export const restaurantList = [
     },
   },
 ];
+
+
+export const Home_Menu = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5399515&lng=77.25915789999999&collection=83639&tags=layout_CCS_Biryani&sortBy=&filters=&type=rcv2&offset=0&page_type=null"
