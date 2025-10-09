@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserInfoContext from "../utils/UserInfoContext";
 
 const Title = () => {
   return (
@@ -21,6 +22,7 @@ const loggedInUser = () => {
 };
 
 const Header = () => {
+  const {loggedInUser} = useContext(UserInfoContext);
   const onlineStatus = useOnlineStatus();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
@@ -45,23 +47,23 @@ const Header = () => {
           <li className="pr-3">
             <Link to="/cart">Cart</Link>
           </li>
-        
+          <li>{loggedInUser}</li>
         </ul>
-          {isLoggedIn ? (
-            <button
-              className="border px-4 rounded-md bg-stone-300"
-              onClick={() => setIsLoggedIn(false)}
-            >
-              Logout
-            </button>
-          ) : (
-            <button
-              className="border px-4 rounded-md bg-blue-500 text-white"
-              onClick={() => setIsLoggedIn(true)}
-            >
-              Login
-            </button>
-          )}
+        {isLoggedIn ? (
+          <button
+            className="border px-4 rounded-md bg-stone-300"
+            onClick={() => setIsLoggedIn(false)}
+          >
+            Logout
+          </button>
+        ) : (
+          <button
+            className="border px-4 rounded-md bg-blue-500 text-white"
+            onClick={() => setIsLoggedIn(true)}
+          >
+            Login
+          </button>
+        )}
       </div>
     </div>
   );

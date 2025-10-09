@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useContext, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Body from "./components/Body";
 import Header from "./components/Header";
@@ -7,18 +7,33 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+  data,
+} from "react-router";
 import ShimmerUI from "./components/ShimmerUI";
+import UserInfoContext from "./utils/UserInfoContext";
+
 // import Grocery from "./components/Grocery";
 
 const Grocery = lazy(() => import("./components/Grocery"));
 
-
 const AppLayout = () => {
+  const [userName, setUserName] = useState();
+  useEffect(() => {
+    const data = {
+      name: "Reehan",
+    };
+    setUserName(data.name);
+  }, []);
   return (
     <>
-      <Header />
-      <Outlet />
+      <UserInfoContext.Provider value={{ loggedInUser: userName, setUserName }}>
+        <Header />
+        <Outlet />
+      </UserInfoContext.Provider>
     </>
   );
 };
@@ -43,9 +58,7 @@ const appRouter = createBrowserRouter([
       {
         path: "/grocery",
         element: (
-          <Suspense
-            fallback={<ShimmerUI />}
-          >
+          <Suspense fallback={<ShimmerUI />}>
             <Grocery />
           </Suspense>
         ),
