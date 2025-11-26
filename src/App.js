@@ -15,8 +15,6 @@ import {
 } from "react-router";
 import ShimmerUI from "./components/ShimmerUI";
 import UserInfoContext from "./utils/UserInfoContext";
-import { Provider } from "react-redux";
-import appStore from "./utils/appStore";
 
 // import Grocery from "./components/Grocery";
 
@@ -32,12 +30,10 @@ const AppLayout = () => {
   }, []);
   return (
     <>
-    <Provider store={appStore}>
       <UserInfoContext.Provider value={{ loggedInUser: userName, setUserName }}>
         <Header />
         <Outlet />
       </UserInfoContext.Provider>
-      </Provider>
     </>
   );
 };
