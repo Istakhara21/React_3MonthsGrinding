@@ -1,0 +1,11 @@
+# Testing
+ - install React Testing Library
+ - Install Jest
+ - Install Babel Dependencies
+ - Configure Babel
+ - Configure Parcel Config file to disable babel transpilation
+ - Jest -> npx jest --init
+ - Install Jsdom Library
+ - Install @babel/preset-react - to make JSX work in test cases
+ - Include @babel/preset-react inside my babel config
+ - Install @testing-library/jest-dom
