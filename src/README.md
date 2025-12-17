@@ -7,5 +7,5 @@
  - Jest -> npx jest --init
  - Install Jsdom Library
  - Install @babel/preset-react - to make JSX work in test cases
- - Include @babel/preset-react inside my babel config
+ - Include @babel/preset-react {runtime: "automatic"} inside my babel config
  - Install @testing-library/jest-dom
