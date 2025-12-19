@@ -5,7 +5,7 @@ import "@testing-library/jest-dom"
 test("should render submit button", () => {
     render(<Contact />);
 
-    const button = screen.getByText("Page");
+    const button = screen.getByText("Submit");
 
     //Assertion
     expect(button).toBeInTheDocument();
